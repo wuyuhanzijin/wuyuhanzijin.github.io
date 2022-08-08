@@ -37,6 +37,8 @@ a{
 }
 img{
     border:0px;
+	padding: 0px;
+    margin: 0px;
 }
 /*--------------  Class类 ---------------*/
 /*无序列表同行靠左定右*/
@@ -61,14 +63,14 @@ img{
 
 /*页眉A*/
 .header_a_a{
-    background-color: #1A1A1A;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 50px;
-    z-index: 0;/*图层号*/
+	background-color: #1A1A1A;
+	content: "";
+	position: absolute;
+	top: 2px;
+	left: 3px;
+	right: 0;
+	height: 50px;
+	z-index: 0;/*图层号*/
 }
 
 /* --------- 伪元素 --------------*/
@@ -101,8 +103,3 @@ a:hover{
 :hover:before,:focus:before:,active:before(鼠标悬停点击右键)
 */
 /* -------- 动画--------- */
-
-
-
-
-
