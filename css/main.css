@@ -1,0 +1,108 @@
+/*
+#7E7E7E灰色（白）
+#D6D6D6白
+#1A1A1A黑
+#2F2F2F灰色（黑）
+*/
+/*By GBPZKimmi*/
+/* ------------- 全局定义 -------------*/
+body{
+    background-color: #363535;
+    color:#fff;
+    min-height: 1000px;
+    margin: 0px;
+}
+html{
+    background-color: #2F2F2F;
+    min-height: 1000px;
+    font-family:sans-serif;/*微软雅黑*/
+    list-style-type: none;
+}
+header{
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+a:link{
+    text-decoration:none;/*去除link下划线*/
+}
+li{
+    padding: 0px;
+    margin: 0px;
+}
+a{
+    padding: 0px;
+    margin: 0px;
+    color: #7E7E7E;
+}
+img{
+    border:0px;
+}
+/*--------------  Class类 ---------------*/
+/*无序列表同行靠左定右*/
+.li_rowleft_flexcenter_mr40{
+    text-align: center;/*文字居中*/
+    display: flex;/*标注flex类*/
+    align-items: center;/*flex居中*/
+    height: 100%;
+    margin-right: 40px;
+    float:left;/*同行靠左*/
+}
+
+/*无序列表同行靠右定右*/
+.li_rowright_flexcenter_mr40{    
+    text-align: center;/*文字居中*/
+    display: flex;/*标注flex类*/
+    align-items: center;/*flex居中*/
+    height: 100%;
+    margin-right: 40px;
+    float:right;/*同行靠右*/
+}
+
+/*页眉A*/
+.header_a_a{
+    background-color: #1A1A1A;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    z-index: 0;/*图层号*/
+}
+
+/* --------- 伪元素 --------------*/
+
+/*
+after后插入
+befor前插入
+a:hover鼠标悬停链接上
+*/
+
+/*星际公民参考代码
+a:hover{
+    transform: scaleX(1);
+}
+.c-brand-menu__link:after {
+    width: calc(100% + 6px);
+    height: 1px;
+    background: linear-gradient(-90deg,#1090ef,#647553 33.33333%,#876d4a 66.66667%,#cc8b25);
+    bottom: 0;
+    content: " ";
+    display: block;
+    left: -3px;
+    top: calc(100% + 4px);
+    position: absolute;
+    transform: scaleX(0);
+}
+*/
+
+/*
+:hover:before,:focus:before:,active:before(鼠标悬停点击右键)
+*/
+/* -------- 动画--------- */
+
+
+
+
+
