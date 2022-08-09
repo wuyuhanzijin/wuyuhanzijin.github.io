@@ -10,7 +10,9 @@ body{
     background-color: #363535;
     color:#fff;
     margin: 0px;
-    overflow:hidden
+    overflow:hidden;
+    width: 100%;
+    height: 100%;
 }
 html{
     background-color: #2F2F2F;
@@ -25,7 +27,6 @@ header{
     margin: 0px;
     border: 0px;
     width: 100%;
-    top:0;
 }
 a:link{
     text-decoration:none;/*去除link下划线*/
@@ -49,7 +50,7 @@ img{
 .li_rowleft_flexcenter_mr40{
     text-align: center;/*文字居中*/
     display: flex;/*标注flex类*/
-    align-items: center;/*flex居中*/
+    align-items: center;/*垂直居中*/
     height: 100%;
     margin-right: 40px;
     float:left;/*同行靠左*/
@@ -59,7 +60,7 @@ img{
 .li_rowright_flexcenter_mr40{    
     text-align: center;/*文字居中*/
     display: flex;/*标注flex类*/
-    align-items: center;/*flex居中*/
+    align-items: center;/*居中*/
     height: 100%;
     margin-right: 40px;
     float:right;/*同行靠右*/
