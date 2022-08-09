@@ -10,8 +10,7 @@ body{
     background-color: #363535;
     color:#fff;
     margin: 0px;
-    
-    
+    overflow:hidden
 }
 html{
     background-color: #2F2F2F;
@@ -20,7 +19,6 @@ html{
     list-style-type: none;
     height: 100%;
     width: 100%;
-    overflow: auto;
 }
 header{
     padding: 0px;
@@ -28,7 +26,6 @@ header{
     border: 0px;
     width: 100%;
     top:0;
-    visibility: visible;
 }
 a:link{
     text-decoration:none;/*去除link下划线*/
