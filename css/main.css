@@ -9,19 +9,26 @@
 body{
     background-color: #363535;
     color:#fff;
-    min-height: 1000px;
     margin: 0px;
+    
+    
 }
 html{
     background-color: #2F2F2F;
     min-height: 1000px;
     font-family:sans-serif;/*微软雅黑*/
     list-style-type: none;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
 }
 header{
     padding: 0px;
     margin: 0px;
     border: 0px;
+    width: 100%;
+    top:0;
+    visibility: visible;
 }
 a:link{
     text-decoration:none;/*去除link下划线*/
@@ -74,6 +81,15 @@ img{
 }
 
 /* --------- 伪元素 --------------*/
+
+
+.header_a_a :hover{
+    color: lightgreen;
+    font-weight: bold;
+    transition:color;
+    transition-duration:500ms;
+}
+
 
 /*
 after后插入
