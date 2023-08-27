@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://blog.linyun.link</id>
+    <title>凌云·LinYun</title>
+    <updated>2023-08-27T03:13:12.671Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://blog.linyun.link"/>
+    <link rel="self" href="https://blog.linyun.link/atom.xml"/>
+    <subtitle>欢迎来到wuyuhanzijin的凌云blog！</subtitle>
+    <logo>https://blog.linyun.link/images/avatar.png</logo>
+    <icon>https://blog.linyun.link/favicon.ico</icon>
+    <rights>All rights reserved 2023, 凌云·LinYun</rights>
+    <entry>
+        <title type="html"><![CDATA[【持续更新】使用Gridea你可能踩的雷]]></title>
+        <id>https://blog.linyun.link/use-gridea/</id>
+        <link href="https://blog.linyun.link/use-gridea/">
+        </link>
+        <updated>2023-08-13T09:42:35.000Z</updated>
+        <summary type="html"><![CDATA[<p>使用Gridea的小白速阅！</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>使用Gridea的小白速阅！</p>
+<!-- more -->
+<h1 id="part-igithub配置仓库相关">Part I：Github配置仓库相关</h1>
+<p>  初次使用必然需要配置仓库，小白们犯难了，这玩意怎么配置捏？<br>
+<img src="https://blog.linyun.link/post-images/1691920466663.png" alt="" loading="lazy"><br>
+  首先，打开Github，登录好之后点击左上角的“New”开始创建一个新的仓库。<br>
+<img src="https://blog.linyun.link/post-images/1691920486409.png" alt="" loading="lazy"><br>
+  进入到如下界面：<br>
+<img src="https://blog.linyun.link/post-images/1691920495430.png" alt="" loading="lazy"><br>
+  其中可以看到Owner是<code>wuyuhanzijin</code>，每个人的都不一样，记住这个Owner的名称，后面的仓库名就填写<code>&lt;用户名&gt;.github.io</code>，例如我的是<code>wuyuhanzijin.github.io</code>，（划重点）选择仓库类型千万选择Public，完成后创建即可。</p>
+<p>  然后进入API Key申请网址<a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a>，点击 <code>Generate new token</code> 随后选择 <code>Generate new token (classic)</code> 开始创建，Notes随便填，比如<code>Gridea</code>，时间限制选择“无期限”，权限只勾选“repo”，然后拉到最底下确认生成API Key即可。<br>
+<img src="https://blog.linyun.link/post-images/1691920419163.png" alt="" loading="lazy"><br>
+  然后进入到一个新的界面，复制 ghp- 开头的Key即可。<br>
+<img src="https://blog.linyun.link/post-images/1691920432224.png" alt="" loading="lazy"><br>
+  最后回到Gridea，域名填写<code>&lt;用户名&gt;.github.io</code>，仓库名填<code>&lt;用户名&gt;.github.io</code>，分支填<code>main</code>，仓库用户名填<code>&lt;用户名&gt;</code>，邮箱填写Github注册用的邮箱，令牌填写刚刚 ghp- 开头的key即可，CNAME没有自己的域名无需填写。<br>
+ </p>
+<h2 id="这里的一个坑">这里的一个坑</h2>
+<h4 id="font-colorred-域名那里一定一定一定要勾选https-font">  <font color=red> 域名那里一定一定一定要勾选<code>HTTPS</code>！ </font></h4>
+<p> <br>
+  配置完成！<br>
+<img src="https://blog.linyun.link/post-images/1691920443731.png" alt="" loading="lazy"><br>
+ <br>
+ </p>
+<h1 id="part-iigithub同步相关">Part II：Github同步相关</h1>
+<p>  小白捣鼓了一上午，终于把Github仓库配置好了，迫不及待地写了一篇博客，激动的心，颤动的手，他点了同步按钮，迟迟不响应，让小白发狂，然后出现了这段提示：<br>
+<img src="https://blog.linyun.link/post-images/1691971992441.png" alt="" loading="lazy"><br>
+这个时候，不要慌张，先排查如下几点</p>
+<ul>
+<li>是否存在仓库配置错误</li>
+<li>是否使用了本地反代工具</li>
+<li>是否存在github.com连接超时现象</li>
+</ul>
+<p> <br>
+  出现问题基本就是这几个原因，但是本地反代为什么不能使用呢？不使用本地反代我进不去Github啊！是的，Github的连接速度在国内属于是 <s>“臭名昭著”</s> 闻名久矣，但是本地反代说白了就是把自己作为一个服务器，去代理另外一个服务器，再返回给客户端，使用Steam ++加速的小伙伴可以打开github加速，然后使用cmd输入 <code>ping github.com</code> 你会发现数据包是从 <code>127.0.0.1</code> (本机地址)发送出来的，所以Github的API接口是不承认这个数据包的，参考往期的“Github加速站&amp;搭建教程”，之所以不可以登录也是因为Github OAuth2接口也不承认你这个数据包。</p>
+<p>  那我们应该如何以一个正确的姿势加速Github呢？参考往期“快来使用Cloudflare Warp!”使用WARP加速即可。<br>
+ <br>
+ </p>
+<h1 id="part-iii-github-page绑定域名相关以cloudflare为例">Part III Github Page绑定域名相关(以Cloudflare为例)</h1>
+<p>  辛辛苦苦搭建好了博客，但是这个github.io域名真的不喜欢，于是小白买了一个域名，托管在了Cloudflare上，准备绑定域名了。</p>
+<p>  但是要怎么配置呢？参考下图，然后回到Gridea填写仓库配置的CNAME即可。<br>
+<img src="https://blog.linyun.link/post-images/1692186648444.png" alt="" loading="lazy"><br>
+  名称就是&lt;名称&gt;.&lt;域名&gt;.&lt;后缀&gt;，比如我填写blog，那么DNS会记录到blog.linyun.link，记录值是你原来的Github Page链接，Gridea的CNAME参考Part I的图，填写CNAME后记得同步一下。</p>
+<h2 id="这里的一个坑-2">这里的一个坑</h2>
+<h4 id="font-colorred-千万关闭cdn加速就是那个小云朵否则https会丢失资源或者重定向过多-font">  <font color=red> 千万关闭CDN加速`，就是那个小云朵！否则HTTPS会丢失资源或者重定向过多！ </font></h4>
+<p> <br>
+ </p>
+<h1 id="part-ivgitalk评论相关">Part IV：Gitalk评论相关</h1>
+<p>等待更新</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[快来使用Cloudflare Warp！]]></title>
+        <id>https://blog.linyun.link/use-cloudflare-wap/</id>
+        <link href="https://blog.linyun.link/use-cloudflare-wap/">
+        </link>
+        <updated>2023-08-13T02:13:30.000Z</updated>
+        <summary type="html"><![CDATA[<p>Warp是Cloudflare旗下的产品，旨在“The free app that makes your Internet safer.”，我们也可以使用Warp客户端来访问YouTube等网站。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Warp是Cloudflare旗下的产品，旨在“The free app that makes your Internet safer.”，我们也可以使用Warp客户端来访问YouTube等网站。</p>
+<!-- more -->
+<h3 id="首先我们打开warp的官网https1111">首先我们打开Warp的官网<a href="https://1.1.1.1/">https://1.1.1.1/</a>；</h3>
+<h3 id="下载安装适用于你的设备的客户端然后打开客户端点击中间的按钮就开始加速了">下载安装适用于你的设备的客户端，然后打开客户端，点击中间的按钮就开始加速了。</h3>
+<p> </p>
+<h3 id="当然这还没完这只是warp接下来我来教你如何升级成warp">当然这还没完，这只是Warp，接下来我来教你如何升级成Warp+</h3>
+<p> </p>
+<blockquote>
+<p>需要准备的材料<br>
+ </p>
+<ul>
+<li>一个可以运行Python 3.x的环境</li>
+</ul>
+</blockquote>
+<p> </p>
+<h3 id="创建如下代码">创建如下代码</h3>
+<pre><code class="language-py">import random
+import httpx
+import os
+import time
+import requests
+
+ppkeys = requests.get('https://gitlab.com/Misaka-blog/warp-script/-/raw/main/files/24pbgen/base_keys')
+pkeys = ppkeys.content.decode('UTF8')
+keys = pkeys.split(',')
+gkeys = []
+
+value_int = int(input(&quot;请输入你需要生成的 WARP+ 密钥数量：\n&gt; &quot;))
+a = 0
+
+while a &lt; value_int:
+  a += 1
+
+  try:
+    headers = {
+      &quot;CF-Client-Version&quot;: &quot;a-6.11-2223&quot;,
+      &quot;Host&quot;: &quot;api.cloudflareclient.com&quot;,
+      &quot;Connection&quot;: &quot;Keep-Alive&quot;,
+      &quot;Accept-Encoding&quot;: &quot;gzip&quot;,
+      &quot;User-Agent&quot;: &quot;okhttp/3.12.1&quot;,
+    }
+
+    with httpx.Client(base_url=&quot;https://api.cloudflareclient.com/v0a2223&quot;,
+                      headers=headers,
+                      timeout=30.0) as client:
+
+      r = client.post(&quot;/reg&quot;)
+      id = r.json()[&quot;id&quot;]
+      license = r.json()[&quot;account&quot;][&quot;license&quot;]
+      token = r.json()[&quot;token&quot;]
+
+      r = client.post(&quot;/reg&quot;)
+      id2 = r.json()[&quot;id&quot;]
+      token2 = r.json()[&quot;token&quot;]
+
+      headers_get = {&quot;Authorization&quot;: f&quot;Bearer {token}&quot;}
+      headers_get2 = {&quot;Authorization&quot;: f&quot;Bearer {token2}&quot;}
+      headers_post = {
+        &quot;Content-Type&quot;: &quot;application/json; charset=UTF-8&quot;,
+        &quot;Authorization&quot;: f&quot;Bearer {token}&quot;,
+      }
+
+      json = {&quot;referrer&quot;: f&quot;{id2}&quot;}
+      client.patch(f&quot;/reg/{id}&quot;, headers=headers_post, json=json)
+
+      client.delete(f&quot;/reg/{id2}&quot;, headers=headers_get2)
+
+      key = random.choice(keys)
+
+      json = {&quot;license&quot;: f&quot;{key}&quot;}
+      client.put(f&quot;/reg/{id}/account&quot;, headers=headers_post, json=json)
+
+      json = {&quot;license&quot;: f&quot;{license}&quot;}
+      client.put(f&quot;/reg/{id}/account&quot;, headers=headers_post, json=json)
+
+      r = client.get(f&quot;/reg/{id}/account&quot;, headers=headers_get)
+      account_type = r.json()[&quot;account_type&quot;]
+      referral_count = r.json()[&quot;referral_count&quot;]
+      license = r.json()[&quot;license&quot;]
+
+      client.delete(f&quot;/reg/{id}&quot;, headers=headers_get)
+      gkeys.append(license)
+      print(f&quot;License Key: {license}\nData Count: {referral_count} of GB(s)&quot;)
+
+  except:
+    print(&quot;Error occurred.&quot;)
+    time.sleep(15)
+  if a % 2 == 0:
+    time.sleep(60)
+
+os.system('cls' if os.name == 'nt' else 'clear')
+print(&quot;下方为生成的密钥列表，请复制粘贴备用！&quot;)
+for x in gkeys:
+  print(x)
+
+input('\n(Enter) to exit.\n')
+</code></pre>
+<p> </p>
+<h4 id="此处感谢misaka-blog大佬的代码">此处感谢<a href="https://gitlab.com/Misaka-blog/">Misaka-blog</a>大佬的代码</h4>
+<p> </p>
+<h3 id="随后打开warp客户端点击右下角设置按钮-偏好设置-使用其他密钥将key复制进去就可以了测一下速发现百兆宽带可以跑到10mbps20mbps另外一个路由器则跑到了30mbps30mbps对于youtube上看看视频是根本不慌">随后打开Warp客户端，点击右下角设置按钮-偏好设置-使用其他密钥，将Key复制进去就可以了，测一下速发现百兆宽带可以跑到10Mbps/20Mbps，另外一个路由器则跑到了30Mbps/30Mbps，对于YouTube上看看视频是根本不慌。</h3>
+<h3 id="但是使用此程序获取到key可以发现这个key是每个1gb数据的用完了可以重新生存一个新的key再次生成">但是使用此程序获取到Key可以发现，这个Key是每个1GB数据的，用完了可以重新生存一个新的Key再次生成。</h3>
+<p> </p>
+<h1 id="总结">总结</h1>
+<h3 id="warp其实不算严格意义上的虚拟专用网络vpn它的初衷也不是提供类似的服务而是保护用户的信息安全用于隐藏ip的-总之还是尽可能不要使用吧">Warp其实不算严格意义上的虚拟专用网络（VPN），它的初衷也不是提供类似的服务，而是保护用户的信息安全，用于隐藏IP的。总之，还是尽可能不要使用吧……</h3>
+<p> </p>
+<h1 id="最后的话">最后的话</h1>
+<h3 id="font-colorred不能用技术来做违法事情font"><font color=red>不能用技术来做违法事情！</font></h3>
+<h3 id="font-colorred不能用技术来做违法事情font-2"><font color=red>不能用技术来做违法事情！</font></h3>
+<h3 id="font-colorred不能用技术来做违法事情font-3"><font color=red>不能用技术来做违法事情！</font></h3>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Github加速站&搭建教程]]></title>
+        <id>https://blog.linyun.link/github-jia-su-zhan/</id>
+        <link href="https://blog.linyun.link/github-jia-su-zhan/">
+        </link>
+        <updated>2023-07-16T01:47:05.000Z</updated>
+        <summary type="html"><![CDATA[<p>Github国内访问慢？试试LinYun的加速站点吧！<br>
+地址：http://github.linyun.link</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Github国内访问慢？试试LinYun的加速站点吧！<br>
+地址：http://github.linyun.link</p>
+<!-- more -->
+<blockquote>
+<p>世界上最远的距离不是生与死的距离，而是我在打开Github你却告诉我连接超时。<br>
+于是乎，便有了Github加速站这个东西，下面是个Example(例子)。</p>
+</blockquote>
+<h1 id="如何食用">如何食用</h1>
+<h3 id="setp-1进入-httpgithublinyunlink">Setp 1：进入 <a href="http://github.linyun.link/" title="点击跳转">http://github.linyun.link/</a></h3>
+<h3 id="step-2开始享用快速的github">Step 2：开始享用快速的Github</h3>
+<p> </p>
+<h1 id="font-colorred注意font"><font color=red>注意：</font></h1>
+<p><font color=red>* 请不要登录你的Github账号在此镜像站点</font><br>
+<font color=red>* 尽管你无法登录！</font><br>
+ <br>
+ </p>
+<blockquote>
+<p>那么这是如何搭建的呢？请看搭建过程：</p>
+</blockquote>
+<h1 id="搭建方法">搭建方法</h1>
+<h3 id="step-1你需要注册一个cloudflare账号如有跳过此步骤">Step 1：你需要注册一个Cloudflare账号（如有跳过此步骤）；</h3>
+<h3 id="step-2创建一个cloudflare-worker">Step 2：创建一个Cloudflare Worker；</h3>
+<h3 id="step-3对worker的mainjs进行编辑使用如下代码">Step 3：对Worker的main.js进行编辑，使用如下代码；</h3>
+<pre><code class="language-js">// 你要镜像的网站.
+const upstream = 'www.github.com'
+
+// 镜像网站的目录，比如你想镜像某个网站的二级目录则填写二级目录的目录名，镜像 google 用不到，默认即可.
+const upstream_path = '/'
+
+// 镜像站是否有手机访问专用网址，没有则填一样的.
+const upstream_mobile = 'www.github.com'
+
+// 屏蔽国家和地区.
+const blocked_region = ['KP', 'SY', 'PK', 'CU']
+
+// 屏蔽 IP 地址.
+const blocked_ip_address = ['0.0.0.0', '127.0.0.1']
+
+// 镜像站是否开启 HTTPS.
+const https = true
+
+// 文本替换.
+const replace_dict = {
+    '$upstream': '$custom_domain',
+    '//github.com': ''
+}
+
+// 以下保持默认，不要动
+addEventListener('fetch', event =&gt; {
+    event.respondWith(fetchAndApply(event.request));
+})
+
+async function fetchAndApply(request) {
+
+    const region = request.headers.get('cf-ipcountry').toUpperCase();
+    const ip_address = request.headers.get('cf-connecting-ip');
+    const user_agent = request.headers.get('user-agent');
+
+    let response = null;
+    let url = new URL(request.url);
+    let url_hostname = url.hostname;
+
+    if (https == true) {
+        url.protocol = 'https:';
+    } else {
+        url.protocol = 'http:';
+    }
+
+    if (await device_status(user_agent)) {
+        var upstream_domain = upstream;
+    } else {
+        var upstream_domain = upstream_mobile;
+    }
+
+    url.host = upstream_domain;
+    if (url.pathname == '/') {
+        url.pathname = upstream_path;
+    } else {
+        url.pathname = upstream_path + url.pathname;
+    }
+
+    if (blocked_region.includes(region)) {
+        response = new Response('Access denied: WorkersProxy is not available in your region yet.', {
+            status: 403
+        });
+    } else if (blocked_ip_address.includes(ip_address)) {
+        response = new Response('Access denied: Your IP address is blocked by WorkersProxy.', {
+            status: 403
+        });
+    } else {
+        let method = request.method;
+        let request_headers = request.headers;
+        let new_request_headers = new Headers(request_headers);
+
+        new_request_headers.set('Host', url.hostname);
+        new_request_headers.set('Referer', url.hostname);
+
+        let original_response = await fetch(url.href, {
+            method: method,
+            headers: new_request_headers
+        })
+
+        let original_response_clone = original_response.clone();
+        let original_text = null;
+        let response_headers = original_response.headers;
+        let new_response_headers = new Headers(response_headers);
+        let status = original_response.status;
+
+        new_response_headers.set('access-control-allow-origin', '*');
+        new_response_headers.set('access-control-allow-credentials', true);
+        new_response_headers.delete('content-security-policy');
+        new_response_headers.delete('content-security-policy-report-only');
+        new_response_headers.delete('clear-site-data');
+
+        const content_type = new_response_headers.get('content-type');
+        if (content_type.includes('text/html') &amp;&amp; content_type.includes('UTF-8')) {
+            original_text = await replace_response_text(original_response_clone, upstream_domain, url_hostname);
+        } else {
+            original_text = original_response_clone.body
+        }
+
+        response = new Response(original_text, {
+            status,
+            headers: new_response_headers
+        })
+    }
+    return response;
+}
+
+async function replace_response_text(response, upstream_domain, host_name) {
+    let text = await response.text()
+
+    var i, j;
+    for (i in replace_dict) {
+        j = replace_dict[i]
+        if (i == '$upstream') {
+            i = upstream_domain
+        } else if (i == '$custom_domain') {
+            i = host_name
+        }
+
+        if (j == '$upstream') {
+            j = upstream_domain
+        } else if (j == '$custom_domain') {
+            j = host_name
+        }
+
+        let re = new RegExp(i, 'g')
+        text = text.replace(re, j);
+    }
+    return text;
+}
+
+
+async function device_status(user_agent_info) {
+    var agents = [&quot;Android&quot;, &quot;iPhone&quot;, &quot;SymbianOS&quot;, &quot;Windows Phone&quot;, &quot;iPad&quot;, &quot;iPod&quot;];
+    var flag = true;
+    for (var v = 0; v &lt; agents.length; v++) {
+        if (user_agent_info.indexOf(agents[v]) &gt; 0) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
+</code></pre>
+<h3 id="step-4自行修改调试后保存配置">Step 4：自行修改调试后，保存配置；</h3>
+<h3 id="step-5进入worker提供的链接即可享用">Step 5：进入Worker提供的链接即可享用！</h3>
+<p> </p>
+<h1 id="font-colorred注意font-2"><font color=red>注意：</font></h1>
+<p><font color=red>* 由于DNS污染你可能无法进入，如要解决参考下文“无法访问解决方案”</font><br>
+ </p>
+<h1 id="无法访问解决方案">无法访问解决方案</h1>
+<h3 id="step-1将一个域名绑定到cloudflare">Step 1：将一个域名绑定到Cloudflare；</h3>
+<h3 id="step-2在域中添加woker路由绑定到二级域名你的域名顶级域名">Step 2：在域中添加Woker路由，绑定到‘&lt;二级域名&gt;.&lt;你的域名&gt;.&lt;顶级域名&gt;/*’；</h3>
+<p>例：github.linyun.link/*</p>
+<h3 id="step-3设置dns添加a记录名称为上面设置的二级域名记录值为8888">Step 3：设置DNS，添加A记录，名称为上面设置的‘&lt;二级域名&gt;’，记录值为8.8.8.8；</h3>
+<h3 id="step-4大功告成使用二级域名你的域名顶级域名进行访问">Step 4：大功告成，使用‘&lt;二级域名&gt;.&lt;你的域名&gt;.&lt;顶级域名&gt;/’进行访问。</h3>
+<p>例：我的是访问’github.linyun.link‘<br>
+ <br>
+ </p>
+<h1 id="原理">原理</h1>
+<h3 id="其实就是简单地反代这里使用了cloudflare免费的woker来处理走了cloudflare的国外服务器的流量然后发送到自己的主机上理论上就可以加速所有国外网站比如google-但是这样的话是无法登录账号的并且cloudflare-worker免费计划只能每天每个账户10000次请求还限制cpu时间总之羊毛是不好薅的">其实就是简单地反代，这里使用了Cloudflare免费的Woker来处理，走了Cloudflare的国外服务器的流量，然后发送到自己的主机上，理论上就可以加速所有国外网站，比如Google。但是这样的话是无法登录账号的，并且Cloudflare Worker免费计划只能每天每个账户10,000次请求，还限制CPU时间，总之羊毛是不好薅的。</h3>
+<p> <br>
+ </p>
+<h1 id="最后的话">最后的话</h1>
+<h3 id="font-colorred不能用技术来做违法事情font"><font color=red>不能用技术来做违法事情！</font></h3>
+<h3 id="font-colorred不能用技术来做违法事情font-2"><font color=red>不能用技术来做违法事情！</font></h3>
+<h3 id="font-colorred不能用技术来做违法事情font-3"><font color=red>不能用技术来做违法事情！</font></h3>
+]]></content>
+    </entry>
+</feed>

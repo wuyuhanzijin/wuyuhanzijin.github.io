@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>快来使用Cloudflare Warp！ | 凌云·LinYun</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.linyun.link/favicon.ico?v=1693105990716">
+<link rel="stylesheet" href="https://blog.linyun.link/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Warp是Cloudflare旗下的产品，旨在“The free app that makes your Internet safer.”，我们也可以使用Warp客户端来访问YouTube等网站。
+
+首先我们打开Warp的官网https:/..." />
+    <meta name="keywords" content="Warp,网络,技术" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.linyun.link">
+        <img src="https://blog.linyun.link/images/avatar.png?v=1693105990716" class="site-logo">
+        <h1 class="site-title">凌云·LinYun</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://wuyuhanzijin.github.io/link-exchange" class="site-nav">
+            友链
+          </a>
+        
+      
+        
+          <a href="/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      欢迎来到wuyuhanzijin的凌云blog！
+    </div>
+    <div class="site-footer">
+      <span id="jinrishici-sentence">正在加载今日诗词....</span>
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script> | <a class="rss" href="https://blog.linyun.link/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">快来使用Cloudflare Warp！</h2>
+            <div class="post-date">2023-08-13</div>
+            
+              <div class="feature-container" style="background-image: url('https://blog.linyun.link/post-images/use-cloudflare-wap.png')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>Warp是Cloudflare旗下的产品，旨在“The free app that makes your Internet safer.”，我们也可以使用Warp客户端来访问YouTube等网站。</p>
+<!-- more -->
+<h3 id="首先我们打开warp的官网https1111">首先我们打开Warp的官网<a href="https://1.1.1.1/">https://1.1.1.1/</a>；</h3>
+<h3 id="下载安装适用于你的设备的客户端然后打开客户端点击中间的按钮就开始加速了">下载安装适用于你的设备的客户端，然后打开客户端，点击中间的按钮就开始加速了。</h3>
+<p> </p>
+<h3 id="当然这还没完这只是warp接下来我来教你如何升级成warp">当然这还没完，这只是Warp，接下来我来教你如何升级成Warp+</h3>
+<p> </p>
+<blockquote>
+<p>需要准备的材料<br>
+ </p>
+<ul>
+<li>一个可以运行Python 3.x的环境</li>
+</ul>
+</blockquote>
+<p> </p>
+<h3 id="创建如下代码">创建如下代码</h3>
+<pre><code class="language-py">import random
+import httpx
+import os
+import time
+import requests
+
+ppkeys = requests.get('https://gitlab.com/Misaka-blog/warp-script/-/raw/main/files/24pbgen/base_keys')
+pkeys = ppkeys.content.decode('UTF8')
+keys = pkeys.split(',')
+gkeys = []
+
+value_int = int(input(&quot;请输入你需要生成的 WARP+ 密钥数量：\n&gt; &quot;))
+a = 0
+
+while a &lt; value_int:
+  a += 1
+
+  try:
+    headers = {
+      &quot;CF-Client-Version&quot;: &quot;a-6.11-2223&quot;,
+      &quot;Host&quot;: &quot;api.cloudflareclient.com&quot;,
+      &quot;Connection&quot;: &quot;Keep-Alive&quot;,
+      &quot;Accept-Encoding&quot;: &quot;gzip&quot;,
+      &quot;User-Agent&quot;: &quot;okhttp/3.12.1&quot;,
+    }
+
+    with httpx.Client(base_url=&quot;https://api.cloudflareclient.com/v0a2223&quot;,
+                      headers=headers,
+                      timeout=30.0) as client:
+
+      r = client.post(&quot;/reg&quot;)
+      id = r.json()[&quot;id&quot;]
+      license = r.json()[&quot;account&quot;][&quot;license&quot;]
+      token = r.json()[&quot;token&quot;]
+
+      r = client.post(&quot;/reg&quot;)
+      id2 = r.json()[&quot;id&quot;]
+      token2 = r.json()[&quot;token&quot;]
+
+      headers_get = {&quot;Authorization&quot;: f&quot;Bearer {token}&quot;}
+      headers_get2 = {&quot;Authorization&quot;: f&quot;Bearer {token2}&quot;}
+      headers_post = {
+        &quot;Content-Type&quot;: &quot;application/json; charset=UTF-8&quot;,
+        &quot;Authorization&quot;: f&quot;Bearer {token}&quot;,
+      }
+
+      json = {&quot;referrer&quot;: f&quot;{id2}&quot;}
+      client.patch(f&quot;/reg/{id}&quot;, headers=headers_post, json=json)
+
+      client.delete(f&quot;/reg/{id2}&quot;, headers=headers_get2)
+
+      key = random.choice(keys)
+
+      json = {&quot;license&quot;: f&quot;{key}&quot;}
+      client.put(f&quot;/reg/{id}/account&quot;, headers=headers_post, json=json)
+
+      json = {&quot;license&quot;: f&quot;{license}&quot;}
+      client.put(f&quot;/reg/{id}/account&quot;, headers=headers_post, json=json)
+
+      r = client.get(f&quot;/reg/{id}/account&quot;, headers=headers_get)
+      account_type = r.json()[&quot;account_type&quot;]
+      referral_count = r.json()[&quot;referral_count&quot;]
+      license = r.json()[&quot;license&quot;]
+
+      client.delete(f&quot;/reg/{id}&quot;, headers=headers_get)
+      gkeys.append(license)
+      print(f&quot;License Key: {license}\nData Count: {referral_count} of GB(s)&quot;)
+
+  except:
+    print(&quot;Error occurred.&quot;)
+    time.sleep(15)
+  if a % 2 == 0:
+    time.sleep(60)
+
+os.system('cls' if os.name == 'nt' else 'clear')
+print(&quot;下方为生成的密钥列表，请复制粘贴备用！&quot;)
+for x in gkeys:
+  print(x)
+
+input('\n(Enter) to exit.\n')
+</code></pre>
+<p> </p>
+<h4 id="此处感谢misaka-blog大佬的代码">此处感谢<a href="https://gitlab.com/Misaka-blog/">Misaka-blog</a>大佬的代码</h4>
+<p> </p>
+<h3 id="随后打开warp客户端点击右下角设置按钮-偏好设置-使用其他密钥将key复制进去就可以了测一下速发现百兆宽带可以跑到10mbps20mbps另外一个路由器则跑到了30mbps30mbps对于youtube上看看视频是根本不慌">随后打开Warp客户端，点击右下角设置按钮-偏好设置-使用其他密钥，将Key复制进去就可以了，测一下速发现百兆宽带可以跑到10Mbps/20Mbps，另外一个路由器则跑到了30Mbps/30Mbps，对于YouTube上看看视频是根本不慌。</h3>
+<h3 id="但是使用此程序获取到key可以发现这个key是每个1gb数据的用完了可以重新生存一个新的key再次生成">但是使用此程序获取到Key可以发现，这个Key是每个1GB数据的，用完了可以重新生存一个新的Key再次生成。</h3>
+<p> </p>
+<h1 id="总结">总结</h1>
+<h3 id="warp其实不算严格意义上的虚拟专用网络vpn它的初衷也不是提供类似的服务而是保护用户的信息安全用于隐藏ip的-总之还是尽可能不要使用吧">Warp其实不算严格意义上的虚拟专用网络（VPN），它的初衷也不是提供类似的服务，而是保护用户的信息安全，用于隐藏IP的。总之，还是尽可能不要使用吧……</h3>
+<p> </p>
+<h1 id="最后的话">最后的话</h1>
+<h3 id="font-colorred不能用技术来做违法事情font"><font color=red>不能用技术来做违法事情！</font></h3>
+<h3 id="font-colorred不能用技术来做违法事情font-2"><font color=red>不能用技术来做违法事情！</font></h3>
+<h3 id="font-colorred不能用技术来做违法事情font-3"><font color=red>不能用技术来做违法事情！</font></h3>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.linyun.link/tag/cI4Ch57qA/" class="tag">
+                    Warp
+                  </a>
+                
+                  <a href="https://blog.linyun.link/tag/RRrC9ocUR/" class="tag">
+                    网络
+                  </a>
+                
+                  <a href="https://blog.linyun.link/tag/RAnLd-CrY/" class="tag">
+                    技术
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.linyun.link/github-jia-su-zhan/">
+                  <h3 class="post-title">
+                    Github加速站&amp;搭建教程
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'a6a2248d0ff69ac78689',
+        clientSecret: 'd1704684b5e589b0da1335a4f9c6e887f75047e7',
+        repo: 'wuyuhanzijin.github.io',
+        owner: 'wuyuhanzijin',
+        admin: ['wuyuhanzijin'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

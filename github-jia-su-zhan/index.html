@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Github加速站&amp;搭建教程 | 凌云·LinYun</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.linyun.link/favicon.ico?v=1693105990716">
+<link rel="stylesheet" href="https://blog.linyun.link/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Github国内访问慢？试试LinYun的加速站点吧！
+地址：http://github.linyun.link
+
+
+世界上最远的距离不是生与死的距离，而是我在打开Github你却告诉我连接超时。
+于是乎，便有了Github加速站这个东西，..." />
+    <meta name="keywords" content="网络,Github,技术" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.linyun.link">
+        <img src="https://blog.linyun.link/images/avatar.png?v=1693105990716" class="site-logo">
+        <h1 class="site-title">凌云·LinYun</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://wuyuhanzijin.github.io/link-exchange" class="site-nav">
+            友链
+          </a>
+        
+      
+        
+          <a href="/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      欢迎来到wuyuhanzijin的凌云blog！
+    </div>
+    <div class="site-footer">
+      <span id="jinrishici-sentence">正在加载今日诗词....</span>
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script> | <a class="rss" href="https://blog.linyun.link/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Github加速站&amp;搭建教程</h2>
+            <div class="post-date">2023-07-16</div>
+            
+              <div class="feature-container" style="background-image: url('https://blog.linyun.link/post-images/github-jia-su-zhan.png')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>Github国内访问慢？试试LinYun的加速站点吧！<br>
+地址：http://github.linyun.link</p>
+<!-- more -->
+<blockquote>
+<p>世界上最远的距离不是生与死的距离，而是我在打开Github你却告诉我连接超时。<br>
+于是乎，便有了Github加速站这个东西，下面是个Example(例子)。</p>
+</blockquote>
+<h1 id="如何食用">如何食用</h1>
+<h3 id="setp-1进入-httpgithublinyunlink">Setp 1：进入 <a href="http://github.linyun.link/" title="点击跳转">http://github.linyun.link/</a></h3>
+<h3 id="step-2开始享用快速的github">Step 2：开始享用快速的Github</h3>
+<p> </p>
+<h1 id="font-colorred注意font"><font color=red>注意：</font></h1>
+<p><font color=red>* 请不要登录你的Github账号在此镜像站点</font><br>
+<font color=red>* 尽管你无法登录！</font><br>
+ <br>
+ </p>
+<blockquote>
+<p>那么这是如何搭建的呢？请看搭建过程：</p>
+</blockquote>
+<h1 id="搭建方法">搭建方法</h1>
+<h3 id="step-1你需要注册一个cloudflare账号如有跳过此步骤">Step 1：你需要注册一个Cloudflare账号（如有跳过此步骤）；</h3>
+<h3 id="step-2创建一个cloudflare-worker">Step 2：创建一个Cloudflare Worker；</h3>
+<h3 id="step-3对worker的mainjs进行编辑使用如下代码">Step 3：对Worker的main.js进行编辑，使用如下代码；</h3>
+<pre><code class="language-js">// 你要镜像的网站.
+const upstream = 'www.github.com'
+
+// 镜像网站的目录，比如你想镜像某个网站的二级目录则填写二级目录的目录名，镜像 google 用不到，默认即可.
+const upstream_path = '/'
+
+// 镜像站是否有手机访问专用网址，没有则填一样的.
+const upstream_mobile = 'www.github.com'
+
+// 屏蔽国家和地区.
+const blocked_region = ['KP', 'SY', 'PK', 'CU']
+
+// 屏蔽 IP 地址.
+const blocked_ip_address = ['0.0.0.0', '127.0.0.1']
+
+// 镜像站是否开启 HTTPS.
+const https = true
+
+// 文本替换.
+const replace_dict = {
+    '$upstream': '$custom_domain',
+    '//github.com': ''
+}
+
+// 以下保持默认，不要动
+addEventListener('fetch', event =&gt; {
+    event.respondWith(fetchAndApply(event.request));
+})
+
+async function fetchAndApply(request) {
+
+    const region = request.headers.get('cf-ipcountry').toUpperCase();
+    const ip_address = request.headers.get('cf-connecting-ip');
+    const user_agent = request.headers.get('user-agent');
+
+    let response = null;
+    let url = new URL(request.url);
+    let url_hostname = url.hostname;
+
+    if (https == true) {
+        url.protocol = 'https:';
+    } else {
+        url.protocol = 'http:';
+    }
+
+    if (await device_status(user_agent)) {
+        var upstream_domain = upstream;
+    } else {
+        var upstream_domain = upstream_mobile;
+    }
+
+    url.host = upstream_domain;
+    if (url.pathname == '/') {
+        url.pathname = upstream_path;
+    } else {
+        url.pathname = upstream_path + url.pathname;
+    }
+
+    if (blocked_region.includes(region)) {
+        response = new Response('Access denied: WorkersProxy is not available in your region yet.', {
+            status: 403
+        });
+    } else if (blocked_ip_address.includes(ip_address)) {
+        response = new Response('Access denied: Your IP address is blocked by WorkersProxy.', {
+            status: 403
+        });
+    } else {
+        let method = request.method;
+        let request_headers = request.headers;
+        let new_request_headers = new Headers(request_headers);
+
+        new_request_headers.set('Host', url.hostname);
+        new_request_headers.set('Referer', url.hostname);
+
+        let original_response = await fetch(url.href, {
+            method: method,
+            headers: new_request_headers
+        })
+
+        let original_response_clone = original_response.clone();
+        let original_text = null;
+        let response_headers = original_response.headers;
+        let new_response_headers = new Headers(response_headers);
+        let status = original_response.status;
+
+        new_response_headers.set('access-control-allow-origin', '*');
+        new_response_headers.set('access-control-allow-credentials', true);
+        new_response_headers.delete('content-security-policy');
+        new_response_headers.delete('content-security-policy-report-only');
+        new_response_headers.delete('clear-site-data');
+
+        const content_type = new_response_headers.get('content-type');
+        if (content_type.includes('text/html') &amp;&amp; content_type.includes('UTF-8')) {
+            original_text = await replace_response_text(original_response_clone, upstream_domain, url_hostname);
+        } else {
+            original_text = original_response_clone.body
+        }
+
+        response = new Response(original_text, {
+            status,
+            headers: new_response_headers
+        })
+    }
+    return response;
+}
+
+async function replace_response_text(response, upstream_domain, host_name) {
+    let text = await response.text()
+
+    var i, j;
+    for (i in replace_dict) {
+        j = replace_dict[i]
+        if (i == '$upstream') {
+            i = upstream_domain
+        } else if (i == '$custom_domain') {
+            i = host_name
+        }
+
+        if (j == '$upstream') {
+            j = upstream_domain
+        } else if (j == '$custom_domain') {
+            j = host_name
+        }
+
+        let re = new RegExp(i, 'g')
+        text = text.replace(re, j);
+    }
+    return text;
+}
+
+
+async function device_status(user_agent_info) {
+    var agents = [&quot;Android&quot;, &quot;iPhone&quot;, &quot;SymbianOS&quot;, &quot;Windows Phone&quot;, &quot;iPad&quot;, &quot;iPod&quot;];
+    var flag = true;
+    for (var v = 0; v &lt; agents.length; v++) {
+        if (user_agent_info.indexOf(agents[v]) &gt; 0) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
+</code></pre>
+<h3 id="step-4自行修改调试后保存配置">Step 4：自行修改调试后，保存配置；</h3>
+<h3 id="step-5进入worker提供的链接即可享用">Step 5：进入Worker提供的链接即可享用！</h3>
+<p> </p>
+<h1 id="font-colorred注意font-2"><font color=red>注意：</font></h1>
+<p><font color=red>* 由于DNS污染你可能无法进入，如要解决参考下文“无法访问解决方案”</font><br>
+ </p>
+<h1 id="无法访问解决方案">无法访问解决方案</h1>
+<h3 id="step-1将一个域名绑定到cloudflare">Step 1：将一个域名绑定到Cloudflare；</h3>
+<h3 id="step-2在域中添加woker路由绑定到二级域名你的域名顶级域名">Step 2：在域中添加Woker路由，绑定到‘&lt;二级域名&gt;.&lt;你的域名&gt;.&lt;顶级域名&gt;/*’；</h3>
+<p>例：github.linyun.link/*</p>
+<h3 id="step-3设置dns添加a记录名称为上面设置的二级域名记录值为8888">Step 3：设置DNS，添加A记录，名称为上面设置的‘&lt;二级域名&gt;’，记录值为8.8.8.8；</h3>
+<h3 id="step-4大功告成使用二级域名你的域名顶级域名进行访问">Step 4：大功告成，使用‘&lt;二级域名&gt;.&lt;你的域名&gt;.&lt;顶级域名&gt;/’进行访问。</h3>
+<p>例：我的是访问’github.linyun.link‘<br>
+ <br>
+ </p>
+<h1 id="原理">原理</h1>
+<h3 id="其实就是简单地反代这里使用了cloudflare免费的woker来处理走了cloudflare的国外服务器的流量然后发送到自己的主机上理论上就可以加速所有国外网站比如google-但是这样的话是无法登录账号的并且cloudflare-worker免费计划只能每天每个账户10000次请求还限制cpu时间总之羊毛是不好薅的">其实就是简单地反代，这里使用了Cloudflare免费的Woker来处理，走了Cloudflare的国外服务器的流量，然后发送到自己的主机上，理论上就可以加速所有国外网站，比如Google。但是这样的话是无法登录账号的，并且Cloudflare Worker免费计划只能每天每个账户10,000次请求，还限制CPU时间，总之羊毛是不好薅的。</h3>
+<p> <br>
+ </p>
+<h1 id="最后的话">最后的话</h1>
+<h3 id="font-colorred不能用技术来做违法事情font"><font color=red>不能用技术来做违法事情！</font></h3>
+<h3 id="font-colorred不能用技术来做违法事情font-2"><font color=red>不能用技术来做违法事情！</font></h3>
+<h3 id="font-colorred不能用技术来做违法事情font-3"><font color=red>不能用技术来做违法事情！</font></h3>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.linyun.link/tag/RRrC9ocUR/" class="tag">
+                    网络
+                  </a>
+                
+                  <a href="https://blog.linyun.link/tag/1q86Y_mHX7/" class="tag">
+                    Github
+                  </a>
+                
+                  <a href="https://blog.linyun.link/tag/RAnLd-CrY/" class="tag">
+                    技术
+                  </a>
+                
+              </div>
+            
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'a6a2248d0ff69ac78689',
+        clientSecret: 'd1704684b5e589b0da1335a4f9c6e887f75047e7',
+        repo: 'wuyuhanzijin.github.io',
+        owner: 'wuyuhanzijin',
+        admin: ['wuyuhanzijin'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

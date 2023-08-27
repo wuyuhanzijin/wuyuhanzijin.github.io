@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>【持续更新】使用Gridea你可能踩的雷 | 凌云·LinYun</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.linyun.link/favicon.ico?v=1693105990716">
+<link rel="stylesheet" href="https://blog.linyun.link/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="使用Gridea的小白速阅！
+
+Part I：Github配置仓库相关
+  初次使用必然需要配置仓库，小白们犯难了，这玩意怎么配置捏？
+
+  首先，打开Github，登录好之后点击左上角的“New”开始创建一个新的仓库。
+
+  进入到如下界..." />
+    <meta name="keywords" content="Gridea,技术" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.linyun.link">
+        <img src="https://blog.linyun.link/images/avatar.png?v=1693105990716" class="site-logo">
+        <h1 class="site-title">凌云·LinYun</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://wuyuhanzijin.github.io/link-exchange" class="site-nav">
+            友链
+          </a>
+        
+      
+        
+          <a href="/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      欢迎来到wuyuhanzijin的凌云blog！
+    </div>
+    <div class="site-footer">
+      <span id="jinrishici-sentence">正在加载今日诗词....</span>
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script> | <a class="rss" href="https://blog.linyun.link/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">【持续更新】使用Gridea你可能踩的雷</h2>
+            <div class="post-date">2023-08-13</div>
+            
+            <div class="post-content" v-pre>
+              <p>使用Gridea的小白速阅！</p>
+<!-- more -->
+<h1 id="part-igithub配置仓库相关">Part I：Github配置仓库相关</h1>
+<p>  初次使用必然需要配置仓库，小白们犯难了，这玩意怎么配置捏？<br>
+<img src="https://blog.linyun.link/post-images/1691920466663.png" alt="" loading="lazy"><br>
+  首先，打开Github，登录好之后点击左上角的“New”开始创建一个新的仓库。<br>
+<img src="https://blog.linyun.link/post-images/1691920486409.png" alt="" loading="lazy"><br>
+  进入到如下界面：<br>
+<img src="https://blog.linyun.link/post-images/1691920495430.png" alt="" loading="lazy"><br>
+  其中可以看到Owner是<code>wuyuhanzijin</code>，每个人的都不一样，记住这个Owner的名称，后面的仓库名就填写<code>&lt;用户名&gt;.github.io</code>，例如我的是<code>wuyuhanzijin.github.io</code>，（划重点）选择仓库类型千万选择Public，完成后创建即可。</p>
+<p>  然后进入API Key申请网址<a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a>，点击 <code>Generate new token</code> 随后选择 <code>Generate new token (classic)</code> 开始创建，Notes随便填，比如<code>Gridea</code>，时间限制选择“无期限”，权限只勾选“repo”，然后拉到最底下确认生成API Key即可。<br>
+<img src="https://blog.linyun.link/post-images/1691920419163.png" alt="" loading="lazy"><br>
+  然后进入到一个新的界面，复制 ghp- 开头的Key即可。<br>
+<img src="https://blog.linyun.link/post-images/1691920432224.png" alt="" loading="lazy"><br>
+  最后回到Gridea，域名填写<code>&lt;用户名&gt;.github.io</code>，仓库名填<code>&lt;用户名&gt;.github.io</code>，分支填<code>main</code>，仓库用户名填<code>&lt;用户名&gt;</code>，邮箱填写Github注册用的邮箱，令牌填写刚刚 ghp- 开头的key即可，CNAME没有自己的域名无需填写。<br>
+ </p>
+<h2 id="这里的一个坑">这里的一个坑</h2>
+<h4 id="font-colorred-域名那里一定一定一定要勾选https-font">  <font color=red> 域名那里一定一定一定要勾选<code>HTTPS</code>！ </font></h4>
+<p> <br>
+  配置完成！<br>
+<img src="https://blog.linyun.link/post-images/1691920443731.png" alt="" loading="lazy"><br>
+ <br>
+ </p>
+<h1 id="part-iigithub同步相关">Part II：Github同步相关</h1>
+<p>  小白捣鼓了一上午，终于把Github仓库配置好了，迫不及待地写了一篇博客，激动的心，颤动的手，他点了同步按钮，迟迟不响应，让小白发狂，然后出现了这段提示：<br>
+<img src="https://blog.linyun.link/post-images/1691971992441.png" alt="" loading="lazy"><br>
+这个时候，不要慌张，先排查如下几点</p>
+<ul>
+<li>是否存在仓库配置错误</li>
+<li>是否使用了本地反代工具</li>
+<li>是否存在github.com连接超时现象</li>
+</ul>
+<p> <br>
+  出现问题基本就是这几个原因，但是本地反代为什么不能使用呢？不使用本地反代我进不去Github啊！是的，Github的连接速度在国内属于是 <s>“臭名昭著”</s> 闻名久矣，但是本地反代说白了就是把自己作为一个服务器，去代理另外一个服务器，再返回给客户端，使用Steam ++加速的小伙伴可以打开github加速，然后使用cmd输入 <code>ping github.com</code> 你会发现数据包是从 <code>127.0.0.1</code> (本机地址)发送出来的，所以Github的API接口是不承认这个数据包的，参考往期的“Github加速站&amp;搭建教程”，之所以不可以登录也是因为Github OAuth2接口也不承认你这个数据包。</p>
+<p>  那我们应该如何以一个正确的姿势加速Github呢？参考往期“快来使用Cloudflare Warp!”使用WARP加速即可。<br>
+ <br>
+ </p>
+<h1 id="part-iii-github-page绑定域名相关以cloudflare为例">Part III Github Page绑定域名相关(以Cloudflare为例)</h1>
+<p>  辛辛苦苦搭建好了博客，但是这个github.io域名真的不喜欢，于是小白买了一个域名，托管在了Cloudflare上，准备绑定域名了。</p>
+<p>  但是要怎么配置呢？参考下图，然后回到Gridea填写仓库配置的CNAME即可。<br>
+<img src="https://blog.linyun.link/post-images/1692186648444.png" alt="" loading="lazy"><br>
+  名称就是&lt;名称&gt;.&lt;域名&gt;.&lt;后缀&gt;，比如我填写blog，那么DNS会记录到blog.linyun.link，记录值是你原来的Github Page链接，Gridea的CNAME参考Part I的图，填写CNAME后记得同步一下。</p>
+<h2 id="这里的一个坑-2">这里的一个坑</h2>
+<h4 id="font-colorred-千万关闭cdn加速就是那个小云朵否则https会丢失资源或者重定向过多-font">  <font color=red> 千万关闭CDN加速`，就是那个小云朵！否则HTTPS会丢失资源或者重定向过多！ </font></h4>
+<p> <br>
+ </p>
+<h1 id="part-ivgitalk评论相关">Part IV：Gitalk评论相关</h1>
+<p>等待更新</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.linyun.link/tag/36MME4lUM/" class="tag">
+                    Gridea
+                  </a>
+                
+                  <a href="https://blog.linyun.link/tag/RAnLd-CrY/" class="tag">
+                    技术
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.linyun.link/use-cloudflare-wap/">
+                  <h3 class="post-title">
+                    快来使用Cloudflare Warp！
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'a6a2248d0ff69ac78689',
+        clientSecret: 'd1704684b5e589b0da1335a4f9c6e887f75047e7',
+        repo: 'wuyuhanzijin.github.io',
+        owner: 'wuyuhanzijin',
+        admin: ['wuyuhanzijin'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
